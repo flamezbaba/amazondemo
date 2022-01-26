@@ -4,8 +4,9 @@ import { mobile } from "../responsive";
 import TopNav from "../components/TopNav";
 import { useMediaQuery } from "react-responsive";
 import { hlSlider } from "../data";
+import c1 from "../assets/c1.png";
 
-import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
+import { HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineArrowSmRight } from "react-icons/hi";
 import { useState } from "react";
 
 const Container = styled.div`
@@ -23,11 +24,14 @@ const Card = styled.div`
 const SectionA = styled.div`
   display: flex;
   padding-left: 8%;
+  padding-right: 8%;
   margin-top: 50px;
   padding-bottom: 50px;
+  gap: 50px;
+  ${mobile({ flexWrap: "wrap" })};
 
   .a1 {
-    width: 42%;
+    width: 52%;
     ${mobile({ width: "86%" })};
 
     /* outline: 1px solid red; */
@@ -195,7 +199,107 @@ const SectionA = styled.div`
             border-radius: 10px;
             width: 30px;
             height: 30px;
-            box-shadow: 1px 1px 4px 0px #eee;
+            
+
+            &:hover {
+              box-shadow: 1px 1px 4px 0px #888;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .a2 {
+    width: 43%;
+    height: 300px;
+    outline: 1px solid black;
+    ${mobile({ width: "86%" })};
+  }
+`;
+
+const Bcard = styled.div`
+  background-color: ${(props) => props.theme.myWhite};
+  border-radius: 10px;
+  padding-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+`;
+
+const SectionB = styled.div`
+  display: flex;
+  padding-left: 8%;
+  padding-right: 8%;
+  margin-top: 50px;
+  padding-bottom: 50px;
+  gap: 50px;
+  background-color: #fff;
+  height: 500px;
+  ${mobile({ flexWrap: "wrap" })};
+
+  .a1 {
+    width: 100%;
+    display: flex;
+    /* gap: 20px; */
+
+    .l1 {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      gap: 40px;
+      ${mobile({ flexWrap: "wrap" })};
+
+      ${Bcard} {
+        display: flex;
+        justify-content: space-between;
+        width: 33.33%;
+        height: 400px;
+        ${mobile({ width: "100%" })};
+
+        .b1 {
+          display: flex;
+          height: 100%;
+          flex-direction: column;
+          justify-content: space-evenly;
+          p {
+            font-size: 1.7rem;
+          }
+
+          li {
+            list-style: none;
+            text-align: left;
+            margin-top: 10px;
+          }
+
+          button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: transparent;
+            border-radius: 5px;
+            border: 2px solid ${(props) => props.theme.primaryColor};
+            color: ${(props) => props.theme.primaryColor};
+            width: 150px;
+            &:hover{
+              background-color: ${(props) => props.theme.primaryColor};
+              color: #fff;
+            }
+          }
+        }
+
+        .b2{
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          img{
+            width: 100%;
+            /* height: 50%; */
           }
         }
       }
@@ -203,25 +307,16 @@ const SectionA = styled.div`
   }
 `;
 
-const SectionB = styled.div`
-  display: flex;
-  padding-right: 8%;
-  margin-top: 50px;
-  padding-bottom: 50px;
-  outline: 1px solid black;
-`;
-
 const Home = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 810px)" });
   const [hlslideIndex, setHlslideIndex] = useState(0);
 
   const handleClick = (direction) => {
-    const ll = (hlSlider.length-1)/2;
-    
-    if(direction === "left"){
+    const ll = (hlSlider.length - 1) / 2;
+
+    if (direction === "left") {
       setHlslideIndex(hlslideIndex > 0 ? hlslideIndex - 1 : ll);
-    }
-    else{
+    } else {
       setHlslideIndex(hlslideIndex < ll ? hlslideIndex + 1 : 0);
     }
 
@@ -232,6 +327,7 @@ const Home = () => {
     <ThemeProvider theme={theme}>
       <Container>
         <TopNav></TopNav>
+
         <SectionA sliderIndex={hlslideIndex}>
           <div className="a1">
             <div className="div1">
@@ -331,18 +427,78 @@ const Home = () => {
                   </span>
                 </div>
                 <div className="arr">
-                  <button onClick={()=> handleClick("left")}>
+                  <button onClick={() => handleClick("left")}>
                     <HiOutlineChevronLeft />
                   </button>
-                  <button onClick={()=> handleClick("right")}>
+                  <button onClick={() => handleClick("right")}>
                     <HiOutlineChevronRight />
                   </button>
                 </div>
               </div>
             </div>
           </div>
+
+          <div className="a2"></div>
         </SectionA>
-        <SectionB></SectionB>
+        <SectionB>
+          <div className="a1">
+            <div className="l1">
+              <Bcard>
+                <div className="b1">
+                  <p>Computers</p>
+                  <div>
+                    <li>Data Storage</li>
+                    <li>Desktop PC</li>
+                    <li>Keyboard</li>
+                    <li>Monitors</li>
+                    <li>Mouse</li>
+                    <li>Tablets</li>
+                  </div>
+                  <button>Go to Page <HiOutlineArrowSmRight/> </button>
+                </div>
+                <div className="b2">
+                  <img src={c1} alt />
+                </div>
+              </Bcard>
+              <Bcard>
+                <div className="b1">
+                  <p>Computers</p>
+                  <div>
+                    <li>Data Storage</li>
+                    <li>Desktop PC</li>
+                    <li>Keyboard</li>
+                    <li>Monitors</li>
+                    <li>Mouse</li>
+                    <li>Tablets</li>
+                  </div>
+                  <button>Go to Page <HiOutlineArrowSmRight/> </button>
+                </div>
+                <div className="b2">
+                  <img src={c1} alt />
+                </div>
+              </Bcard>
+              <Bcard>
+                <div className="b1">
+                  <p>Computers</p>
+                  <div>
+                    <li>Data Storage</li>
+                    <li>Desktop PC</li>
+                    <li>Keyboard</li>
+                    <li>Monitors</li>
+                    <li>Mouse</li>
+                    <li>Tablets</li>
+                  </div>
+                  <button>Go to Page <HiOutlineArrowSmRight/> </button>
+                </div>
+                <div className="b2">
+                  <img src={c1} alt />
+                </div>
+              </Bcard>
+              
+            </div>
+            <div className="l2"></div>
+          </div>
+        </SectionB>
       </Container>
     </ThemeProvider>
   );
