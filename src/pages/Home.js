@@ -3,15 +3,39 @@ import { theme } from "../utils/theme";
 import { mobile } from "../responsive";
 import TopNav from "../components/TopNav";
 import { useMediaQuery } from "react-responsive";
-import { hlSlider } from "../data";
+import { hlSlider, topSeller } from "../data";
 import c1 from "../assets/c1.png";
 
-import { HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineArrowSmRight } from "react-icons/hi";
+import {
+  HiOutlineChevronLeft,
+  HiOutlineChevronRight,
+  HiOutlineArrowSmRight,
+  HiShoppingCart,
+} from "react-icons/hi";
 import { useState } from "react";
 
 const Container = styled.div`
   width: 100%;
   background-color: ${(props) => props.theme.myWhite};
+`;
+
+const SButton = styled.button`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 2px solid ${(props) => props.theme.primaryColor};
+  color: ${(props) => props.theme.primaryColor};
+  width: 150px;
+  &:hover {
+    background-color: ${(props) => props.theme.primaryColor};
+    color: #fff;
+  }
 `;
 
 const Card = styled.div`
@@ -199,7 +223,6 @@ const SectionA = styled.div`
             border-radius: 10px;
             width: 30px;
             height: 30px;
-            
 
             &:hover {
               box-shadow: 1px 1px 4px 0px #888;
@@ -229,77 +252,270 @@ const Bcard = styled.div`
 
 const SectionB = styled.div`
   display: flex;
-  padding-left: 8%;
-  padding-right: 8%;
+  justify-content: space-between;
+  padding-top: 50px;
   margin-top: 50px;
   padding-bottom: 50px;
   gap: 50px;
   background-color: #fff;
+  height: auto;
+  width: 100%;
+  /* ${mobile({ flexWrap: "wrap", height: "500px", overflow: "hidden" })}; */
+
+  .r1,
+  .r3 {
+    width: 10%;
+    outline: 1px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      width: 50px;
+      height: 50px;
+      border: none;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: ${(props) => props.theme.myWhite};
+      cursor: pointer;
+
+      &:hover {
+        background-color: ${(props) => props.theme.grey1};
+      }
+    }
+  }
+
+  .r2 {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-evenly;
+
+    ${Bcard} {
+      width: 40%;
+      height: 350px;
+      display: flex;
+
+      .b1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        p {
+          font-size: 1.7rem;
+        }
+
+        li {
+          list-style: none;
+          text-align: left;
+          margin-top: 10px;
+        }
+
+        button {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding-left: 20px;
+          padding-right: 20px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          background-color: transparent;
+          border-radius: 5px;
+          border: 2px solid ${(props) => props.theme.primaryColor};
+          color: ${(props) => props.theme.primaryColor};
+          width: 150px;
+          &:hover {
+            background-color: ${(props) => props.theme.primaryColor};
+            color: #fff;
+          }
+        }
+      }
+
+      .b2 {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        img {
+          width: 50%;
+          /* height: 50%; */
+        }
+      }
+    }
+  }
+`;
+
+const SectionC = styled.div`
+  display: flex;
+  padding-left: 8%;
+  padding-right: 8%;
+  margin-top: 50px;
+  padding-bottom: 50px;
+  gap: 20px;
+  background-color: ${(props) => props.theme.myWhite};
   height: 500px;
   ${mobile({ flexWrap: "wrap" })};
 
   .a1 {
-    width: 100%;
     display: flex;
-    /* gap: 20px; */
-
     .l1 {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      margin-top: 30px;
-      gap: 40px;
-      ${mobile({ flexWrap: "wrap" })};
+      width: 300px;
 
-      ${Bcard} {
+      .x1 {
+        p {
+          width: 100px;
+          font-size: 30px;
+          font-weight: 500;
+          margin-bottom: 10px;
+        }
+      }
+
+      .x2 {
         display: flex;
-        justify-content: space-between;
-        width: 33.33%;
-        height: 400px;
-        ${mobile({ width: "100%" })};
+        position: relative;
+        margin-top: 30px;
+        padding: 20px 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        height: 150px;
 
-        .b1 {
-          display: flex;
-          height: 100%;
-          flex-direction: column;
-          justify-content: space-evenly;
+        .q1 {
+          width: 300px;
+
           p {
-            font-size: 1.7rem;
+            font-size: 1.2rem;
+            font-weight: 500;
           }
 
-          li {
-            list-style: none;
-            text-align: left;
-            margin-top: 10px;
-          }
-
-          button {
+          .w1 {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-left: 20px;
-            padding-right: 20px;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            background-color: transparent;
-            border-radius: 5px;
-            border: 2px solid ${(props) => props.theme.primaryColor};
-            color: ${(props) => props.theme.primaryColor};
-            width: 150px;
-            &:hover{
-              background-color: ${(props) => props.theme.primaryColor};
-              color: #fff;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+
+            span {
+              padding: 5px 10px;
+              background-color: ${(props) => props.theme.myWhite};
+              color: ${(props) => props.theme.dark1};
+              font-size: 0.8rem;
+              font-weight: 500;
+              border-radius: 10px;
             }
           }
         }
 
-        .b2{
+        .q2 {
+          display: flex;
+          width: 70px;
+          justify-content: space-between;
+          position: absolute;
+          right: 30px;
+          bottom: 10px;
+          gap: 10px;
+          /* outline: 2px solid green; */
+          padding-top: 20px;
+          padding-left: 20px;
+          /* background-color: ${(props) => props.theme.myWhite}; */
+          /* border-radius: -10px; */
+
+          button {
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            background-color: transparent;
+            border-radius: 10px;
+            border: 1px solid ${(props) => props.theme.grey2};
+            box-shadow: 2px 1px 1px ${(props) => props.theme.grey2};
+            cursor: pointer;
+
+            &:hover {
+              box-shadow: 0px 0px 0px ${(props) => props.theme.grey2};
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .a2 {
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 20px;
+    overflow: hidden;
+    width: 100%;
+
+    .p1 {
+      background-color: #fff;
+      height: 375px;
+      width: 400px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+
+      .i {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        margin-top: 10px;
+
+        img {
+          width: 200px;
+        }
+      }
+
+      .g {
+        margin-top: 10px;
+        background-color: ${(props) => props.theme.myWhite};
+        padding: 20px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        position: relative;
+
+        .title {
+          font-weight: 500;
+          font-size: 1rem;
+        }
+
+        .cat {
+          font-size: 0.7rem;
+          color: ${(props) => props.theme.dark1};
+        }
+
+        .price {
+          font-weight: 500;
+          font-size: 1.2rem;
+          color: ${(props) => props.theme.primaryColor};
+        }
+
+        button {
           display: flex;
           align-items: center;
-          justify-content: flex-end;
-          img{
-            width: 100%;
-            /* height: 50%; */
+          justify-content: center;
+          position: absolute;
+          bottom: 20px;
+          right: 20px;
+          background-color: ${(props) => props.theme.primaryColor};
+          /* padding: 7px 30px; */
+          border-radius: 5px;
+          border: none;
+          width: 70px;
+          height: 30px;
+          color: #fff;
+
+          &:hover {
+            background-color: transparent;
+            border: 2px solid ${(props) => props.theme.primaryColor};
+            color: ${(props) => props.theme.primaryColor};
           }
         }
       }
@@ -441,64 +657,92 @@ const Home = () => {
           <div className="a2"></div>
         </SectionA>
         <SectionB>
-          <div className="a1">
-            <div className="l1">
-              <Bcard>
-                <div className="b1">
-                  <p>Computers</p>
-                  <div>
-                    <li>Data Storage</li>
-                    <li>Desktop PC</li>
-                    <li>Keyboard</li>
-                    <li>Monitors</li>
-                    <li>Mouse</li>
-                    <li>Tablets</li>
-                  </div>
-                  <button>Go to Page <HiOutlineArrowSmRight/> </button>
+          <div className="r1">
+            <button>
+              <HiOutlineChevronLeft size={28} />
+            </button>
+          </div>
+          <div className="r2">
+          {["a","a","a", "a",].map((item) => (<Bcard>
+              <div className="b1">
+                <p>Computers</p>
+                <div>
+                  <li>Data Storage</li>
+                  <li>Desktop PC</li>
+                  <li>Keyboard</li>
+                  <li>Monitors</li>
+                  <li>Mouse</li>
+                  <li>Tablets</li>
                 </div>
-                <div className="b2">
-                  <img src={c1} alt />
-                </div>
-              </Bcard>
-              <Bcard>
-                <div className="b1">
-                  <p>Computers</p>
-                  <div>
-                    <li>Data Storage</li>
-                    <li>Desktop PC</li>
-                    <li>Keyboard</li>
-                    <li>Monitors</li>
-                    <li>Mouse</li>
-                    <li>Tablets</li>
-                  </div>
-                  <button>Go to Page <HiOutlineArrowSmRight/> </button>
-                </div>
-                <div className="b2">
-                  <img src={c1} alt />
-                </div>
-              </Bcard>
-              <Bcard>
-                <div className="b1">
-                  <p>Computers</p>
-                  <div>
-                    <li>Data Storage</li>
-                    <li>Desktop PC</li>
-                    <li>Keyboard</li>
-                    <li>Monitors</li>
-                    <li>Mouse</li>
-                    <li>Tablets</li>
-                  </div>
-                  <button>Go to Page <HiOutlineArrowSmRight/> </button>
-                </div>
-                <div className="b2">
-                  <img src={c1} alt />
-                </div>
-              </Bcard>
-              
-            </div>
-            <div className="l2"></div>
+                <button>
+                  Go to Page <HiOutlineArrowSmRight />{" "}
+                </button>
+              </div>
+              <div className="b2">
+                <img src={c1} alt />
+              </div>
+            </Bcard>
+          ))}
+          </div>
+          <div className="r3">
+            <button>
+              <HiOutlineChevronRight size={28} />
+            </button>
           </div>
         </SectionB>
+        <SectionC>
+          <div className="a1">
+            <div className="l1">
+              <div className="x1">
+                <p>Top Sellers Phone</p>
+                <SButton>
+                  Go to page <HiOutlineArrowSmRight />
+                </SButton>
+              </div>
+              <div className="x2">
+                <div className="q1">
+                  <p>Quick view</p>
+                  <div className="w1">
+                    <span>Samsung</span>
+                    <span>Apple</span>
+                    <span>Xiaomi</span>
+                    <span>Redmi</span>
+                    <span>Google</span>
+                    <span>Huawei</span>
+                  </div>
+                </div>
+                <div className="q2">
+                  <button onClick={() => handleClick("left")}>
+                    <HiOutlineChevronLeft />
+                  </button>
+                  <button onClick={() => handleClick("right")}>
+                    <HiOutlineChevronRight />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="a2">
+            {topSeller.map((item) => (
+              <div className="p1">
+                <div className="i">
+                  <img src={item.avatar} alt="" />
+                </div>
+
+                <div className="g">
+                  <div className="b">
+                    <p className="title">{item.title}</p>
+                    <p className="cat">{item.cat}</p>
+                    <p className="price">{item.price}$</p>
+                  </div>
+                  <button onClick={() => handleClick("right")}>
+                    <HiShoppingCart />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </SectionC>
       </Container>
     </ThemeProvider>
   );

@@ -14,3 +14,28 @@ export const hlSlider = [
     "https://cars.usnews.com/pics/size/390x290/images/Auto/izmo/i159614879/2021_tesla_model_s_angularrear.jpg"
     
 ];
+
+export const topSeller = [
+    {
+        id: 1,
+        avatar: "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/74/037778/1.jpg?6381",
+        title: "Galaxy s21 ultra",
+        cat: "Samsung",
+        price: 1150
+    },
+    {
+        id: 2,
+        avatar: "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/74/037778/1.jpg?6381",
+        title: "iPhone 12 Pro Max",
+        cat: "Apple",
+        price: 1300
+    },
+    {
+        id: 3,
+        avatar: "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/74/037778/1.jpg?6381",
+        title: "Redmi 9T",
+        cat: "Redmi",
+        price: 200
+    },
+    
+];
