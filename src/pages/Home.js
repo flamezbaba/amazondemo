@@ -5,6 +5,8 @@ import TopNav from "../components/TopNav";
 import { useMediaQuery } from "react-responsive";
 import { hlSlider, topSeller } from "../data";
 import c1 from "../assets/c1.png";
+import sofa from "../assets/sofa.png";
+import elon from "../assets/elon.mp4";
 
 import {
   HiOutlineChevronLeft,
@@ -145,6 +147,7 @@ const SectionA = styled.div`
             justify-content: flex-start;
             gap: 15px;
             margin-top: 10px;
+            transition: all 1.5s ease;
             transform: translateX(${(props) => props.sliderIndex * -300}px);
 
             img {
@@ -205,6 +208,7 @@ const SectionA = styled.div`
               border-radius: 20px;
               background-color: ${(props) => props.theme.primaryColor};
               /* transform: translateX(30%); */
+              transition: all 1.5s ease;
               transform: translateX(${(props) => props.sliderIndex * 50}%);
             }
           }
@@ -235,9 +239,27 @@ const SectionA = styled.div`
 
   .a2 {
     width: 43%;
-    height: 300px;
-    outline: 1px solid black;
+    height: 570px;
+    border-radius: 10px;
+    background-image: url("https://cloudfront-us-east-2.images.arcpublishing.com/reuters/5EBW4JPYLRPRTMP53GJQRMWNYM.jpg");
+    background-size: cover;
+    position: relative;
     ${mobile({ width: "86%" })};
+
+    div {
+      position: absolute;
+      width: 200px;
+      height: 70px;
+      bottom: 0px;
+      right: 0px;
+      gap: 10px;
+      background-color: ${(props) => props.theme.myWhite};
+      color: ${(props) => props.theme.primaryColor};
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-top-left-radius: 30px;
+    }
   }
 `;
 
@@ -260,12 +282,10 @@ const SectionB = styled.div`
   background-color: #fff;
   height: auto;
   width: 100%;
-  /* ${mobile({ flexWrap: "wrap", height: "500px", overflow: "hidden" })}; */
 
   .r1,
   .r3 {
     width: 10%;
-    outline: 1px solid blue;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -293,11 +313,14 @@ const SectionB = styled.div`
     flex-wrap: wrap;
     gap: 40px;
     justify-content: space-evenly;
+    ${mobile({ width: "90%", height: "400px", overflow: "hidden" })};
 
     ${Bcard} {
       width: 40%;
       height: 350px;
       display: flex;
+      border-radius: 10px;
+      ${mobile({ width: "100%" })};
 
       .b1 {
         display: flex;
@@ -337,6 +360,7 @@ const SectionB = styled.div`
         display: flex;
         align-items: center;
         justify-content: flex-end;
+        ${mobile({ display: "none" })};
         img {
           width: 50%;
           /* height: 50%; */
@@ -354,8 +378,8 @@ const SectionC = styled.div`
   padding-bottom: 50px;
   gap: 20px;
   background-color: ${(props) => props.theme.myWhite};
-  height: 500px;
-  ${mobile({ flexWrap: "wrap" })};
+  height: auto;
+  ${mobile({ flexWrap: "wrap", height: "auto" })};
 
   .a1 {
     display: flex;
@@ -442,7 +466,8 @@ const SectionC = styled.div`
     display: flex;
     /* justify-content: space-between; */
     gap: 20px;
-    overflow: hidden;
+    overflow: scroll;
+    /* ${mobile({ overflow: "scroll" })}; */
     width: 100%;
 
     .p1 {
@@ -518,6 +543,57 @@ const SectionC = styled.div`
             color: ${(props) => props.theme.primaryColor};
           }
         }
+      }
+    }
+  }
+`;
+
+const SectionD = styled.div`
+  display: flex;
+  padding-left: 8%;
+  padding-right: 8%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  gap: 40px;
+  background-color: #fff;
+  height: auto;
+  ${mobile({ flexWrap: "wrap", height: "auto" })};
+
+  .x1{
+    img{
+      ${mobile({ width: "80%"})};
+      width: 500px;
+    }
+  }
+
+  .x2 {
+    .t {
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    .d {
+      margin-top: 10px;
+      font-size: 0.8rem;
+      margin-bottom: 20px;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 180px;
+      height: 40px;
+      background-color:  ${(props) => props.theme.primaryColor};
+      color: #fff;
+      border-radius: 7px;
+      border: 2px solid ${(props) => props.theme.primaryColor};
+      cursor: pointer;
+      font-weight: 500;
+
+      &:hover {
+        background-color: transparent;
+        color: ${(props) => props.theme.primaryColor};
       }
     }
   }
@@ -611,7 +687,7 @@ const Home = () => {
                   </Card>
                 </div>
                 <div className="c2">
-                  {/* <video src="https://youtu.be/plNmaCuPSYw" controls></video> */}
+                  <video src={elon} controls></video>
                 </div>
               </div>
             </div>
@@ -654,7 +730,11 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="a2"></div>
+          <div className="a2">
+            <div>
+              Go to product <HiOutlineArrowSmRight />
+            </div>
+          </div>
         </SectionA>
         <SectionB>
           <div className="r1">
@@ -663,26 +743,27 @@ const Home = () => {
             </button>
           </div>
           <div className="r2">
-          {["a","a","a", "a",].map((item) => (<Bcard>
-              <div className="b1">
-                <p>Computers</p>
-                <div>
-                  <li>Data Storage</li>
-                  <li>Desktop PC</li>
-                  <li>Keyboard</li>
-                  <li>Monitors</li>
-                  <li>Mouse</li>
-                  <li>Tablets</li>
+            {["a", "a", "a", "a"].map((item) => (
+              <Bcard>
+                <div className="b1">
+                  <p>Computers</p>
+                  <div>
+                    <li>Data Storage</li>
+                    <li>Desktop PC</li>
+                    <li>Keyboard</li>
+                    <li>Monitors</li>
+                    <li>Mouse</li>
+                    <li>Tablets</li>
+                  </div>
+                  <button>
+                    Go to Page <HiOutlineArrowSmRight />{" "}
+                  </button>
                 </div>
-                <button>
-                  Go to Page <HiOutlineArrowSmRight />{" "}
-                </button>
-              </div>
-              <div className="b2">
-                <img src={c1} alt />
-              </div>
-            </Bcard>
-          ))}
+                <div className="b2">
+                  <img src={c1} alt />
+                </div>
+              </Bcard>
+            ))}
           </div>
           <div className="r3">
             <button>
@@ -743,6 +824,28 @@ const Home = () => {
             ))}
           </div>
         </SectionC>
+        <SectionD>
+          <div className="x1">
+            <img src={sofa} alt="" />
+          </div>
+          <div className="x2">
+            <p className="t">Week Ikea</p>
+            <p className="d">
+              No matter the season, and for any number of reason, there are
+              always amazing offers waiting for you at IKEA Russia.
+              <br />
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum
+            </p>
+            <button>Shop Now</button>
+          </div>
+        </SectionD>
       </Container>
     </ThemeProvider>
   );
