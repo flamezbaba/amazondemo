@@ -144,7 +144,9 @@ const TopNav = () => {
     <ThemeProvider theme={theme}>
         <Header>
           <Logo>
+          <a href="/">
             <img src={logo} alt="" />
+            </a>
           </Logo>
           <LeftNav>
             <div
@@ -176,9 +178,11 @@ const TopNav = () => {
               <Bsvg>
                 <HiOutlineHeart size={16} />
               </Bsvg>
+              <a href="/cart">
               <Bsvg>
                 <HiOutlineShoppingCart size={16} />
               </Bsvg>
+              </a>
               {!isMobile && (
                 <Bsvg>
                   <img src={avatar} alt="" />
