@@ -2,18 +2,12 @@ import styled, { ThemeProvider } from "styled-components";
 import { theme } from "../utils/theme";
 import { mobile } from "../responsive";
 import TopNav from "../components/TopNav";
-import { useMediaQuery } from "react-responsive";
-import { hlSlider, topSeller } from "../data";
-import c1 from "../assets/c1.png";
-import sofa from "../assets/sofa.png";
-import elon from "../assets/elon.mp4";
+
 
 import {
   HiOutlineShoppingBag,
   HiOutlineTrash,
-  HiShoppingCart,
 } from "react-icons/hi";
-import { useState } from "react";
 
 const Container = styled.div`
   width: 100%;

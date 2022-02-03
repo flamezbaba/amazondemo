@@ -2,7 +2,7 @@ import styled, { ThemeProvider } from "styled-components";
 import { theme } from "../utils/theme";
 import { mobile } from "../responsive";
 import TopNav from "../components/TopNav";
-import { useMediaQuery } from "react-responsive";
+// import { useMediaQuery } from "react-responsive";
 import { hlSlider, topSeller } from "../data";
 import c1 from "../assets/c1.png";
 import sofa from "../assets/sofa.png";
@@ -600,7 +600,7 @@ const SectionD = styled.div`
 `;
 
 const Home = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 810px)" });
+  // const isMobile = useMediaQuery({ query: "(max-width: 810px)" });
   const [hlslideIndex, setHlslideIndex] = useState(0);
 
   const handleClick = (direction) => {
@@ -760,7 +760,7 @@ const Home = () => {
                   </button>
                 </div>
                 <div className="b2">
-                  <img src={c1} alt />
+                  <img src={c1} alt="" />
                 </div>
               </Bcard>
             ))}
