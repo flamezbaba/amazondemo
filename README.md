@@ -1,6 +1,6 @@
-# Amazon (Demo Project)
+# Amazon Redesign (Demo Project)
 
-- User Interface Design by Toria Nnenna
+- User Interface Design by Andrew Kabirov
 - https://www.behance.net/gallery/133613819/Amazon-Redesign
 
 ## Project Link
